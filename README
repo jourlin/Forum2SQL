@@ -1,0 +1,10 @@
+- Creation de la table auteurs :
+CREATE TABLE authors AS SELECT distinct(author) FROM messages;
+
+- Creation de la table des sujets :
+
+- Nombre de messages à contenu distinct : 9.894.494
+SELECT count(distinct content) FROM messages;
+
+- Nombre d'auteurs : 364.175 
+SELECT count(distinct author) FROM messages;
