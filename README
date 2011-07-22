@@ -9,3 +9,6 @@ SELECT count(distinct content) FROM messages;
 
 - Nombre d'auteurs : 364.175 
 SELECT count(distinct author) FROM messages;
+
+- Extraire les messages contenant "c'est-à-dire" :
+SELECT author, date, time, discussion_title, nread, nrep, content FROM (SELECT * FROM messages_cleaned WHERE substring(content, 'c\\\'est-à-dire') IS NOT NULL) as x, discussions as y WHERE x.debate_id=y.debate_id ORDER BY date ASC, time ASC ;
