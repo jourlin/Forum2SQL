@@ -2,7 +2,7 @@
 CREATE TABLE authors AS SELECT distinct(author) FROM messages;
 
 - Creation de la table des fils de discussion :
-CREATE TABLE discussions AS SELECT DISTINCT debate_id,  substring("x", 1, length("x")-6 ), nread, nrep FROM (select debate_id, translate(substring(url, '[a-zA-Z0-9\-]*-sujet'), '-', ' ') as x from messages_cleaned LIMIT 10) as y, (SELECT id, translate(substring(url, '[a-zA-Z0-9\-]*-sujet'), '-', ' ') as z, nread, nrep, url FROM sujets) as a WHERE id=debate_id AND x=z;
+CREATE TABLE discussions AS SELECT DISTINCT debate_id,  substring("x", 1, length("x")-6 ), nread, nrep FROM (select debate_id, translate(substring(url, '[a-zA-Z0-9\-]*-sujet'), '-', ' ') as x from messages_cleaned) as y, (SELECT id, translate(substring(url, '[a-zA-Z0-9\-]*-sujet'), '-', ' ') as z, nread, nrep, url FROM sujets) as a WHERE id=debate_id AND x=z;
 
 - Nombre de messages à contenu distinct : 9.894.494
 SELECT count(distinct content) FROM messages;
